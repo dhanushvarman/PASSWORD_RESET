@@ -10,13 +10,16 @@ function Verification() {
     const navigate = useNavigate();
 
     const [string, setString] = useState();
+    const [loading,setloading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
 
             try {
+                setloading(true)
                 const data = await axios.get(`${config.api}/${params.id}`);
                 setString(data.data.random)
+                setloading(false)
             } catch (error) {
                 console.log("Error in Getting User")
             }
@@ -51,7 +54,14 @@ function Verification() {
 
     return (
         <div id="verification">
-            <div class="login" style={{ height: "500px" }}>
+            {
+                loading ?<div class="d-flex justify-content-center" style={{marginTop:"300px"}}>
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+                :
+                <div class="login" style={{ height: "500px" }}>
                 <h2 >Verification</h2>
 
                 <form class="login-form" style={{ marginTop: "70px" }} onSubmit={formik.handleSubmit}>
@@ -72,6 +82,8 @@ function Verification() {
                     <input type="submit" className='mt-4 btn btn-primary' value={"VERIFY"} />
                 </form>
             </div>
+            }
+            
         </div>
     )
 }
