@@ -10,6 +10,7 @@ function Forgotpassword() {
             const data = await axios.post(`${config.api}/forgot-password`,values)
             alert(data.data.message)
         } catch (error) {
+            alert("User Not Found")
             console.log("Error in Forgot Password")
         }
     }
