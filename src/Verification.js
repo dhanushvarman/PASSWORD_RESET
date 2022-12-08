@@ -15,7 +15,7 @@ function Verification() {
         async function fetchData() {
 
             try {
-                const data = await axios.get(`${config.api}/reset/${params.id}`);
+                const data = await axios.get(`${config.api}/${params.id}`);
                 setString(data.data.random)
             } catch (error) {
                 console.log("Error in Getting User")

@@ -33,7 +33,7 @@ function Resetpassword() {
             try {
                 setloading(true);
                 
-                await axios.post(`${config.api}/reset/reset-password/${params.id}/${params.token}`,values);
+                await axios.post(`${config.api}/reset-password/${params.id}/${params.token}`,values);
                 setloading(false);
                 alert("Password Updated");
                 navigate("/")

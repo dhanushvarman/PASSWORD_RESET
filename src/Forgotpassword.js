@@ -7,7 +7,7 @@ function Forgotpassword() {
     async function reset(){
         try {
             var values = {email : document.getElementById("login-input-user").value};
-            const data = await axios.post(`${config.api}/reset/forgot-password`,values)
+            const data = await axios.post(`${config.api}/forgot-password`,values)
             alert(data.data.message)
         } catch (error) {
             console.log("Error in Forgot Password")
