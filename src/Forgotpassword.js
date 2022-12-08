@@ -1,15 +1,20 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { config } from './config'
 
 function Forgotpassword() {
 
+    const[loading,setloading] = useState(false)
+
     async function reset(){
         try {
+            setloading(true)
             var values = {email : document.getElementById("login-input-user").value};
             const data = await axios.post(`${config.api}/forgot-password`,values)
+            setloading(false)
             alert(data.data.message)
         } catch (error) {
+            setloading(false)
             alert("User Not Found")
             console.log("Error in Forgot Password")
         }
@@ -30,7 +35,15 @@ function Forgotpassword() {
                         Email
                     </label>
                     <input id="login-input-user" class="login__input" type="email" />
-                    <input class="login__submit mt-5 text-center" onClick={reset} value="Reset Password"/>
+                    {
+                        loading ? <button class="login__submit mt-5" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                      </button>
+                        :
+                        <input class="login__submit mt-5 text-center" onClick={reset} value="Reset Password"/>
+                    }
+                    
                 </form>
             </div>
         </section>
