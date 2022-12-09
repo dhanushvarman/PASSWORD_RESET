@@ -5,12 +5,14 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Forgotpassword from './Forgotpassword';
 import Verification from './Verification';
 import Resetpassword from './Resetpassword';
+import Createuser from './Createuser';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Forgotpassword/>}></Route>
+        <Route path='/' element={<Createuser/>}></Route>
+        <Route path='/forgot-password' element={<Forgotpassword/>}></Route>
         <Route path='/verification/:id/:token' element={<Verification/>}></Route>
         <Route path='/reset-password/:id/:token' element={<Resetpassword/>}></Route>
       </Routes>

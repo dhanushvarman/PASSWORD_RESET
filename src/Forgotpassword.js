@@ -25,6 +25,7 @@ function Forgotpassword() {
 
             </div>
             <div class="login-container">
+                
                 <form action="" class="form-login">
                     <ul class="login-nav">
                         <li class="login-nav__item active">
